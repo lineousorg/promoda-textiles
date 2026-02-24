@@ -1,5 +1,4 @@
-import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import {
   Sprout,
@@ -11,7 +10,14 @@ import {
   Users,
   ArrowRight,
 } from "lucide-react";
+
 import qualityImage from "@/assets/quality-control.jpg";
+
+// ✅ Import Compliance Logos
+import gots from "@/assets/gots.png";
+import grs from "@/assets/grs.png";
+import hi from "@/assets/hi.png";
+import oekotex from "@/assets/oekotex.png";
 
 const supplyChainSteps = [
   { icon: Sprout, label: "Seed" },
@@ -51,22 +57,19 @@ const certifications = [
   },
 ];
 
+// ✅ Logos as objects
 const complianceLogos = [
-  "BSCI",
-  "SEDEX",
-  "WRAP",
-  "ACCORD",
-  "ISO 9001",
-  "SA8000",
-  "REACH",
-  "OCS",
+  { name: "gots", src: gots },
+  { name: "grs", src: grs },
+  { name: "hi", src: hi },
+  { name: "oekotex", src: oekotex },
 ];
 
 export const Sustainability = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
-  // Duplicate for seamless infinite scroll
+  // Duplicate for seamless scroll
   const duplicatedLogos = [...complianceLogos, ...complianceLogos];
 
   return (
@@ -102,6 +105,7 @@ export const Sustainability = () => {
                     {step.label}
                   </span>
                 </div>
+
                 {index < supplyChainSteps.length - 1 && (
                   <ArrowRight className="w-4 h-4 text-foreground/30 flex-shrink-0 hidden md:block" />
                 )}
@@ -112,7 +116,7 @@ export const Sustainability = () => {
 
         {/* Main Content Grid */}
         <div className="grid lg:grid-cols-2 gap-0 rounded-2xl overflow-hidden shadow-xl mb-16">
-          {/* Left - Image with vertical text */}
+          {/* Left */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
@@ -124,7 +128,7 @@ export const Sustainability = () => {
               alt="Sustainable manufacturing"
               className="w-full h-full object-cover"
             />
-            {/* Vertical Text Overlay */}
+
             <div className="absolute left-0 top-0 h-full w-12 md:w-16 bg-primary/90 flex items-center justify-center">
               <span
                 className="text-primary-foreground font-bold text-sm md:text-base tracking-[0.25em] whitespace-nowrap"
@@ -138,7 +142,7 @@ export const Sustainability = () => {
             </div>
           </motion.div>
 
-          {/* Right - Certifications with descriptions */}
+          {/* Right */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
@@ -148,16 +152,11 @@ export const Sustainability = () => {
             <h3 className="text-xl md:text-2xl font-bold text-secondary-foreground mb-4 tracking-wide">
               OUR SOURCING RESPONSE
             </h3>
+
             <p className="text-secondary-foreground/80 mb-8 text-sm md:text-base">
-              Sustainability and responsibility shape every decision we make.
-              Alongside certified materials and responsible environmental
-              practices, we place equal importance on fair labour, worker
-              safety, and ethical manufacturing, working exclusively with
-              audited partners who meet internationally recognised social and
-              environmental standards. These values are embedded throughout our
-              procurement process, from supplier selection to ongoing oversight.
-              They ensure transparency, accountability, and long-term integrity
-              across our supply chain.
+              Sustainability and responsibility shape every decision we make. We
+              work exclusively with audited partners who meet internationally
+              recognised social and environmental standards.
             </p>
 
             <div className="space-y-6">
@@ -174,6 +173,7 @@ export const Sustainability = () => {
                       {cert.name}
                     </span>
                   </div>
+
                   <div className="flex-1">
                     <p className="text-secondary-foreground/60 text-xs mb-1">
                       {cert.fullName}
@@ -188,7 +188,7 @@ export const Sustainability = () => {
           </motion.div>
         </div>
 
-        {/* Compliance Logos Carousel */}
+        {/* ✅ Compliance Logos Carousel */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -197,29 +197,28 @@ export const Sustainability = () => {
           <p className="text-center text-muted-foreground text-sm uppercase tracking-widest mb-8">
             Compliance & Certification Partners
           </p>
+
           <div className="relative overflow-hidden">
             <motion.div
               className="flex gap-12 items-center"
-              animate={{
-                x: [0, -50 * complianceLogos.length * 3],
-              }}
+              animate={{ x: ["0%", "-50%"] }}
               transition={{
-                x: {
-                  repeat: Infinity,
-                  repeatType: "loop",
-                  duration: 25,
-                  ease: "linear",
-                },
+                repeat: Infinity,
+                repeatType: "loop",
+                duration: 25,
+                ease: "linear",
               }}
             >
               {duplicatedLogos.map((logo, index) => (
                 <div
-                  key={`${logo}-${index}`}
-                  className="flex-shrink-0 px-6 py-3 bg-background rounded-lg border border-border"
+                  key={`${logo.name}-${index}`}
+                  className="flex-shrink-0 px-8 py-4 bg-background rounded-xl border border-border flex items-center justify-center"
                 >
-                  <span className="text-lg font-bold text-muted-foreground/50 tracking-tight whitespace-nowrap">
-                    {logo}
-                  </span>
+                  <img
+                    src={logo.src}
+                    alt={logo.name}
+                    className="h-8 md:h-10 lg:h-12 w-auto object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
+                  />
                 </div>
               ))}
             </motion.div>

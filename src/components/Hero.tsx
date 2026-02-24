@@ -95,7 +95,7 @@ export const Hero = () => {
             </AnimatePresence>
           </span>
           <br />
-          Full Solutions
+          Solutions
         </motion.h1>
 
         <motion.p

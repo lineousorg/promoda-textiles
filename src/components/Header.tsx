@@ -41,7 +41,7 @@ export const Header = () => {
             <img
               src={isScrolled ? "/promoda-black.png" : "/promoda-white.png"}
               alt="Promoda Logo"
-              className="h-9 w-auto object-contain transition-all duration-300"
+              className="h-8 w-auto object-contain transition-all duration-300"
             />
           </a>
 

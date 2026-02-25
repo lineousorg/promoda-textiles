@@ -23,8 +23,9 @@ const Index = () => {
       <WhyUs />
       <ClientLogos />
       <Sustainability />
-      <Contact />
       <PremiumOfficeLocations offices={offices} />
+      <Contact />
+
       <Footer />
     </main>
   );

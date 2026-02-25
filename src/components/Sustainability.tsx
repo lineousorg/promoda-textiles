@@ -13,14 +13,17 @@ import {
 
 import qualityImage from "@/assets/sustainability.jpg";
 
-// ✅ Import Compliance Logos
+/* ✅ Certification Cards Images */
+import bci from "@/assets/certifications/bci.png";
+import oekoTex from "@/assets/certifications/oekoTex.png";
+import gots from "@/assets/certifications/gots.png";
+import grs from "@/assets/certifications/grs.png";
+
+/* ✅ Compliance Partners Logos */
 import accord from "@/assets/compliance/accord.png";
 import alliance from "@/assets/compliance/alliance.png";
 import amfori from "@/assets/compliance/amfori.png";
-import gots from "@/assets/compliance/gots.png";
-import grs from "@/assets/compliance/grs.png";
 import higgIndex from "@/assets/compliance/higgIndex.png";
-import oekoTex from "@/assets/compliance/oekoTex.png";
 import organic from "@/assets/compliance/organic.png";
 import recycled from "@/assets/compliance/recycled.png";
 import slc from "@/assets/compliance/slc.png";
@@ -42,39 +45,33 @@ const supplyChainSteps = [
 const certifications = [
   {
     name: "BCI",
-    fullName: "Better Cotton Initiative",
+    image: bci,
     description:
-      "Making global cotton production better for the people who produce it, better for the environment it grows in, and better for the sector's future.",
+      "Better Cotton Initiative promoting sustainable cotton production.",
   },
   {
-    name: "OEKO-TEX®",
-    fullName: "STANDARD 100",
-    description:
-      "Certifying products are free of harmful chemicals and are safe for human use.",
+    name: "OEKO-TEX",
+    image: oekoTex,
+    description: "Certified safe textile products free from harmful chemicals.",
   },
   {
     name: "GOTS",
-    fullName: "Global Organic Textile Standard",
+    image: gots,
     description:
-      "Processing standard for organic fibers, including ecological and social criteria, backed up by independent certification.",
+      "Global organic textile processing standard for sustainability.",
   },
   {
     name: "GRS",
-    fullName: "Global Recycled Standard",
-    description:
-      "Intended for companies making and selling products with recycled content, addressing traceability and environmental principles.",
+    image: grs,
+    description: "Recycled material traceability and environmental compliance.",
   },
 ];
 
-// ✅ Logos as objects
 const complianceLogos = [
   { name: "ACCORD", src: accord },
   { name: "ALLIANCE", src: alliance },
   { name: "AMFORI", src: amfori },
-  { name: "GOTS", src: gots },
-  { name: "GRS", src: grs },
-  { name: "HIGG INDEX", src: higgIndex },
-  { name: "OEKO-TEX", src: oekoTex },
+  { name: "HIGG", src: higgIndex },
   { name: "ORGANIC", src: organic },
   { name: "RECYCLED", src: recycled },
   { name: "SLC", src: slc },
@@ -87,7 +84,6 @@ export const Sustainability = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
-  // Duplicate for seamless scroll
   const duplicatedLogos = [...complianceLogos, ...complianceLogos];
 
   return (
@@ -97,7 +93,6 @@ export const Sustainability = () => {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground">
@@ -106,50 +101,50 @@ export const Sustainability = () => {
         </motion.div>
 
         {/* Supply Chain Flow */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="mb-20"
-        >
+        <div className="mb-20">
           <div className="flex flex-wrap justify-center items-center gap-2 md:gap-0">
             {supplyChainSteps.map((step, index) => (
-              <div key={`${step.label}-${index}`} className="flex items-center">
+              <div key={index} className="flex items-center">
                 <div className="flex flex-col items-center px-3 md:px-6">
                   <div className="w-12 h-12 md:w-16 md:h-16 rounded-full border-2 border-foreground/20 flex items-center justify-center mb-2 bg-background">
                     <step.icon className="w-5 h-5 md:w-7 md:h-7 text-foreground/70" />
                   </div>
+
                   <span className="text-xs md:text-sm text-muted-foreground text-center whitespace-nowrap">
                     {step.label}
                   </span>
                 </div>
 
                 {index < supplyChainSteps.length - 1 && (
-                  <ArrowRight className="w-4 h-4 text-foreground/30 flex-shrink-0 hidden md:block" />
+                  <ArrowRight className="w-4 h-4 text-foreground/30 hidden md:block" />
                 )}
               </div>
             ))}
           </div>
-        </motion.div>
+        </div>
 
-        {/* Main Content Grid */}
-        <div className="grid lg:grid-cols-2 gap-0 rounded-2xl overflow-hidden shadow-xl mb-16">
-          {/* Left */}
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="relative bg-primary/10 min-h-[400px] lg:min-h-[500px]"
-          >
+        {/* Content Grid */}
+
+        <div className="grid lg:grid-cols-2 rounded-3xl overflow-hidden shadow-2xl mb-20 border border-white/10">
+          {/* ================= LEFT IMAGE ================= */}
+          <div className="relative min-h-[400px] lg:min-h-[520px] group">
+            {/* Image */}
             <img
               src={qualityImage}
               alt="Sustainable manufacturing"
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
             />
 
-            <div className="absolute left-0 top-0 h-full w-12 md:w-16 bg-primary/90 flex items-center justify-center">
+            {/* Gradient Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+
+            {/* Side Text Ribbon */}
+            <div
+              className="absolute left-0 top-0 h-full w-12 md:w-16 
+      bg-primary/90 backdrop-blur-lg flex items-center justify-center"
+            >
               <span
-                className="text-primary-foreground font-bold text-sm md:text-base tracking-[0.25em] whitespace-nowrap"
+                className="text-primary-foreground font-bold text-xs md:text-sm tracking-[0.3em]"
                 style={{
                   writingMode: "vertical-rl",
                   transform: "rotate(180deg)",
@@ -158,60 +153,72 @@ export const Sustainability = () => {
                 SUSTAINABILITY & INNOVATION
               </span>
             </div>
-          </motion.div>
 
-          {/* Right */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="bg-secondary p-8 md:p-10 lg:p-12"
-          >
-            <h3 className="text-xl md:text-2xl font-bold text-secondary-foreground mb-4 tracking-wide">
-              OUR SOURCING RESPONSE
-            </h3>
+            {/* Image Caption */}
+            <div className="absolute bottom-6 left-6 right-6 text-white">
+              <h4 className="text-2xl font-bold mb-2">Ethical Manufacturing</h4>
+              <p className="text-white/70 text-sm max-w-md">
+                Responsible sourcing and sustainable production across global
+                supply chains.
+              </p>
+            </div>
+          </div>
 
-            <p className="text-secondary-foreground/80 mb-8 text-sm md:text-base">
-              Sustainability and responsibility shape every decision we make. We
-              work exclusively with audited partners who meet internationally
-              recognised social and environmental standards.
-            </p>
+          {/* ================= RIGHT CONTENT ================= */}
+          <div className="bg-secondary/90 backdrop-blur-xl p-10 lg:p-14 space-y-8">
+            {/* Title */}
+            <div>
+              <h3 className="text-2xl md:text-3xl font-bold text-secondary-foreground mb-4 tracking-wide">
+                OUR SOURCING RESPONSE
+              </h3>
 
-            <div className="space-y-6">
+              <p className="text-secondary-foreground/80 text-sm md:text-base leading-relaxed max-w-lg">
+                Sustainability and responsibility shape every decision we make.
+                We work exclusively with audited partners meeting global social
+                and environmental standards.
+              </p>
+            </div>
+
+            {/* Certifications */}
+            <div className="space-y-4">
               {certifications.map((cert, index) => (
-                <motion.div
-                  key={cert.name}
-                  initial={{ opacity: 0, y: 15 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.4, delay: 0.5 + index * 0.1 }}
-                  className="flex gap-4"
+                <div
+                  key={index}
+                  className="group flex gap-5 items-center p-4 rounded-2xl
+          border border-secondary-foreground/10
+          hover:bg-white/50 hover:shadow-lg
+          transition-all duration-300"
                 >
-                  <div className="flex-shrink-0 w-16 h-12 bg-secondary-foreground/10 rounded flex items-center justify-center">
-                    <span className="text-secondary-foreground font-bold text-xs">
-                      {cert.name}
-                    </span>
+                  {/* Logo */}
+                  <div
+                    className="w-20 h-14 bg-white rounded-xl p-3 flex items-center justify-center shadow-sm
+          group-hover:scale-105 transition-transform duration-300"
+                  >
+                    <img
+                      src={cert.image}
+                      alt={cert.name}
+                      className="h-full object-contain"
+                    />
                   </div>
 
-                  <div className="flex-1">
-                    <p className="text-secondary-foreground/60 text-xs mb-1">
-                      {cert.fullName}
+                  {/* Text */}
+                  <div>
+                    <p className="text-secondary-foreground font-semibold text-sm">
+                      {cert.name}
                     </p>
-                    <p className="text-secondary-foreground/90 text-sm leading-relaxed">
+
+                    <p className="text-secondary-foreground/70 text-xs leading-relaxed">
                       {cert.description}
                     </p>
                   </div>
-                </motion.div>
+                </div>
               ))}
             </div>
-          </motion.div>
+          </div>
         </div>
 
-        {/* ✅ Compliance Logos Carousel */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.6 }}
-        >
+        {/* Compliance Carousel */}
+        <div>
           <p className="text-center text-muted-foreground text-sm uppercase tracking-widest mb-8">
             Compliance & Certification Partners
           </p>
@@ -235,14 +242,16 @@ export const Sustainability = () => {
                   <img
                     src={logo.src}
                     alt={logo.name}
-                    className="h-8 md:h-10 lg:h-12 w-auto object-contain  transition-all duration-300"
+                    className="h-8 md:h-10 lg:h-12 object-contain"
                   />
                 </div>
               ))}
             </motion.div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
 };
+
+export default Sustainability;

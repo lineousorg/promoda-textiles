@@ -15,14 +15,14 @@ export const PremiumOfficeLocations = () => {
       email: "manajir@promodatextiles.com",
       whatsapp: "+8801836836423",
     },
-    {
-      flag: "🇬🇧",
-      city: "United Kingdom (Regional Sales)",
-      officeName: "Draapes Fashions Limited",
-      address: "7 City Aews, Barkingside, Ilford IG6 2FV, England",
-      email: "zaafir@promodatextiles.com",
-      whatsapp: "+447478643127",
-    },
+    // {
+    //   flag: "🇬🇧",
+    //   city: "United Kingdom (Regional Sales)",
+    //   officeName: "Draapes Fashions Limited",
+    //   address: "7 City Aews, Barkingside, Ilford IG6 2FV, England",
+    //   email: "zaafir@promodatextiles.com",
+    //   whatsapp: "+447478643127",
+    // },
     {
       flag: "🇭🇰",
       city: "Hong Kong (Commercial Office)",
@@ -46,11 +46,7 @@ export const PremiumOfficeLocations = () => {
       className="relative section-padding"
       style={{
         background: `
-          linear-gradient(
-            to bottom,
-            #D4DCE5,
-            #C2CBD8
-          )
+          radial-gradient(circle at top, #1A2640 0%, #0F1729 60%, #0B1020 100%)
         `,
       }}
     >
@@ -66,18 +62,18 @@ export const PremiumOfficeLocations = () => {
             Global Presence
           </p>
 
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
             Our Global Offices
           </h2>
 
-          <p className="text-foreground/70 text-lg max-w-2xl mx-auto">
+          <p className="text-white/70 text-lg max-w-2xl mx-auto">
             Supporting international brands with local sourcing and business
             operations across the world.
           </p>
         </motion.div>
 
         {/* Cards Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {officeLocations.map((location, index) => {
             const mapLink = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
               location.address,
@@ -92,49 +88,44 @@ export const PremiumOfficeLocations = () => {
                 transition={{ delay: index * 0.1 }}
                 whileHover={{ y: -6 }}
                 className="group relative p-6 rounded-2xl
-                bg-white/70 backdrop-blur-xl
-                border border-white/40
+                bg-white/10 backdrop-blur-xl
+                border border-white/10
                 hover:border-primary/30
-                shadow-sm
                 transition-all duration-300"
               >
                 <div className="space-y-3">
-                  {/* Location Header */}
                   <div className="flex items-start gap-3">
                     <MapPin className="text-primary w-5 h-5 mt-1 flex-shrink-0" />
 
                     <div>
-                      <h5 className="text-foreground font-semibold">
+                      <h5 className="text-white font-semibold">
                         {location.flag} {location.city}
                       </h5>
-                      <p className="text-foreground/70 text-sm">
+                      <p className="text-white/70 text-sm">
                         {location.officeName}
                       </p>
                     </div>
                   </div>
 
-                  {/* Address */}
                   <a
                     href={mapLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="block text-foreground/60 text-sm hover:text-primary transition"
+                    className="block text-white/60 text-sm hover:text-primary transition"
                   >
                     {location.address}
                   </a>
 
-                  {/* Email */}
                   {location.email && (
                     <a
                       href={`mailto:${location.email}`}
-                      className="flex items-center gap-2 text-foreground/60 text-sm hover:text-primary transition"
+                      className="flex items-center gap-2 text-white/60 text-sm hover:text-primary transition"
                     >
                       <Mail className="w-4 h-4" />
                       {location.email}
                     </a>
                   )}
 
-                  {/* WhatsApp */}
                   {location.whatsapp && (
                     <a
                       href={`https://wa.me/${location.whatsapp.replace(
@@ -143,7 +134,7 @@ export const PremiumOfficeLocations = () => {
                       )}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-2 text-foreground/60 text-sm hover:text-primary transition"
+                      className="flex items-center gap-2 text-white/60 text-sm hover:text-primary transition"
                     >
                       <Phone className="w-4 h-4" />
                       {location.whatsapp}

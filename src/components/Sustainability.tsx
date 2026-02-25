@@ -122,7 +122,7 @@ export const Sustainability = () => {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="mb-20"
         >
-          <div className="flex flex-wrap justify-center items-center gap-2 md:gap-0">
+          {/* <div className="flex flex-wrap justify-center items-center gap-2 md:gap-0">
             {supplyChainSteps.map((step, index) => (
               <div key={`${step.label}-${index}`} className="flex items-center">
                 <div className="flex flex-col items-center px-3 md:px-6">
@@ -139,7 +139,7 @@ export const Sustainability = () => {
                 )}
               </div>
             ))}
-          </div>
+          </div> */}
         </motion.div>
 
         {/* Main Grid */}

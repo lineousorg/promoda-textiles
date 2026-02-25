@@ -14,10 +14,19 @@ import {
 import qualityImage from "@/assets/quality-control.jpg";
 
 // ✅ Import Compliance Logos
-import gots from "@/assets/gots.png";
-import grs from "@/assets/grs.png";
-import hi from "@/assets/hi.png";
-import oekotex from "@/assets/oekotex.png";
+import accord from "@/assets/compliance/accord.png";
+import alliance from "@/assets/compliance/alliance.png";
+import amfori from "@/assets/compliance/amfori.png";
+import gots from "@/assets/compliance/gots.png";
+import grs from "@/assets/compliance/grs.png";
+import higgIndex from "@/assets/compliance/higgIndex.png";
+import oekoTex from "@/assets/compliance/oekoTex.png";
+import organic from "@/assets/compliance/organic.png";
+import recycled from "@/assets/compliance/recycled.png";
+import slc from "@/assets/compliance/slc.png";
+import textileExchange from "@/assets/compliance/textileExchange.png";
+import wrap from "@/assets/compliance/wrap.png";
+import zdhc from "@/assets/compliance/zdhc.png";
 
 const supplyChainSteps = [
   { icon: Sprout, label: "Seed" },
@@ -59,10 +68,19 @@ const certifications = [
 
 // ✅ Logos as objects
 const complianceLogos = [
-  { name: "gots", src: gots },
-  { name: "grs", src: grs },
-  { name: "hi", src: hi },
-  { name: "oekotex", src: oekotex },
+  { name: "ACCORD", src: accord },
+  { name: "ALLIANCE", src: alliance },
+  { name: "AMFORI", src: amfori },
+  { name: "GOTS", src: gots },
+  { name: "GRS", src: grs },
+  { name: "HIGG INDEX", src: higgIndex },
+  { name: "OEKO-TEX", src: oekoTex },
+  { name: "ORGANIC", src: organic },
+  { name: "RECYCLED", src: recycled },
+  { name: "SLC", src: slc },
+  { name: "TEXTILE EXCHANGE", src: textileExchange },
+  { name: "WRAP", src: wrap },
+  { name: "ZDHC", src: zdhc },
 ];
 
 export const Sustainability = () => {
@@ -217,7 +235,7 @@ export const Sustainability = () => {
                   <img
                     src={logo.src}
                     alt={logo.name}
-                    className="h-8 md:h-10 lg:h-12 w-auto object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
+                    className="h-8 md:h-10 lg:h-12 w-auto object-contain  transition-all duration-300"
                   />
                 </div>
               ))}

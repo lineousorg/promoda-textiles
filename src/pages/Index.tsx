@@ -8,8 +8,11 @@ import { WhyUs } from "@/components/WhyUs";
 import { Sustainability } from "@/components/Sustainability";
 import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
+import { PremiumOfficeLocations } from "@/components/PremiumOfficeLocations";
 
 const Index = () => {
+  const offices = [];
+
   return (
     <main className="min-h-screen">
       <Header />
@@ -21,6 +24,7 @@ const Index = () => {
       <ClientLogos />
       <Sustainability />
       <Contact />
+      <PremiumOfficeLocations offices={offices} />
       <Footer />
     </main>
   );

@@ -11,7 +11,7 @@ import {
   ArrowRight,
 } from "lucide-react";
 
-import qualityImage from "@/assets/quality-control.jpg";
+import qualityImage from "@/assets/sustainability.jpg";
 
 // ✅ Import Compliance Logos
 import accord from "@/assets/compliance/accord.png";

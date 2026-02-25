@@ -61,7 +61,7 @@ export const Footer = () => {
             <img
               src="/promoda-white.png"
               alt="Promoda Logo"
-              className="h-10 w-auto object-contain mb-4"
+              className="h-8 w-auto object-contain mb-4"
             />
 
             <p className="text-white/60 mb-6 max-w-md">

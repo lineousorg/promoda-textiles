@@ -15,28 +15,28 @@ export const PremiumOfficeLocations = () => {
       email: "manajir@promodatextiles.com",
       whatsapp: "+8801836836423",
     },
-    // {
-    //   flag: "🇬🇧",
-    //   city: "United Kingdom (Regional Sales)",
-    //   officeName: "Draapes Fashions Limited",
-    //   address: "7 City Aews, Barkingside, Ilford IG6 2FV, England",
-    //   email: "zaafir@promodatextiles.com",
-    //   whatsapp: "+447478643127",
-    // },
+    {
+      flag: "🇬🇧",
+      city: "United Kingdom (Regional Sales)",
+      // officeName: "Draapes Fashions Limited",
+      address: "7 City Aews, Barkingside, Ilford IG6 2FV, England",
+      email: "zaafir@promodatextiles.com",
+      whatsapp: "+447478643127",
+    },
     {
       flag: "🇭🇰",
       city: "Hong Kong (Commercial Office)",
       officeName: "Promoda Textiles Hong Kong Ltd",
       address:
         "Unit 5, 6/F, Laurels Industrial Centre, 32 Tai Yau Street, San Po Kong, Kowloon, Hong Kong",
-      whatsapp: "+85223231905",
+      // whatsapp: "+85223231905",
     },
     {
       flag: "🇳🇱",
       city: "Netherlands",
       officeName: "HMZ Fashiongroup BV",
       address: "Industrieweg 43, 2382 NT, Zoeterwoude Rijndijk, Netherlands",
-      whatsapp: "+85223288834",
+      // whatsapp: "+85223288834",
     },
   ];
 
@@ -73,7 +73,7 @@ export const PremiumOfficeLocations = () => {
         </motion.div>
 
         {/* Cards Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {officeLocations.map((location, index) => {
             const mapLink = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
               location.address,

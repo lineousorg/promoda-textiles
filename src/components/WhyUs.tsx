@@ -8,93 +8,61 @@ const reasons = [
   {
     icon: MapPin,
     title: "UK-Based Partner Office",
-    description:
-      "Enabling in-person meetings and local support for your convenience.",
+    description: "Enabling in-person meetings and dedicated regional support.",
   },
   {
     icon: HeartHandshake,
     title: "End-to-End Support",
     description:
-      "Across sourcing, development, manufacturing, QA and logistics.",
+      "From sourcing and development to QA, production and logistics.",
   },
   {
     icon: Package,
     title: "Low MOQs",
     description:
-      "From 500 units per style per colour with flexible lead times.",
+      "Starting from 500 units per style per colour with flexible timelines.",
   },
   {
     icon: Globe,
     title: "Global Sourcing Network",
-    description:
-      "Network of 30+ specialist factories for jersey, knit, woven and denim.",
+    description: "Specialist factories across Asia and Europe.",
   },
   {
     icon: Award,
     title: "Proven Track Record",
     description:
-      "Supporting international fashion and sportswear brands since 2007.",
+      "Supporting international fashion & sportswear brands since 2007.",
   },
 ];
 
-/* ------------------ GLOBAL LOCATIONS ------------------ */
+/* ------------------ OFFICE LOCATIONS ------------------ */
 
-const globalLocations = [
+const officeLocations = [
   {
-    region: "Europe",
-    locations: [
-      {
-        city: "London",
-        country: "UK",
-        coordinates: { x: "47%", y: "27%" },
-        connections: ["Istanbul"],
-      },
-      {
-        city: "Lisbon",
-        country: "Portugal",
-        coordinates: { x: "44%", y: "32%" },
-        connections: ["London"],
-      },
-      {
-        city: "Istanbul",
-        country: "Turkey",
-        coordinates: { x: "56%", y: "33%" },
-        connections: ["London", "Dhaka", "Shanghai"],
-      },
-    ],
+    city: "London",
+    country: "United Kingdom",
+    coordinates: { x: 48, y: 27 },
+    connections: ["Dhaka", "Hong Kong", "Zoeterwoude-Rijndijk"],
   },
   {
-    region: "Asia",
-    locations: [
-      {
-        city: "Shanghai",
-        country: "China",
-        coordinates: { x: "75%", y: "35%" },
-        connections: ["Istanbul", "Delhi"],
-      },
-      {
-        city: "Delhi",
-        country: "India",
-        coordinates: { x: "63%", y: "38%" },
-        connections: ["Shanghai", "Dhaka"],
-      },
-      {
-        city: "Dhaka",
-        country: "Bangladesh",
-        coordinates: { x: "65%", y: "40%" },
-        connections: ["Delhi", "Istanbul"],
-      },
-      {
-        city: "Ho Chi Minh",
-        country: "Vietnam",
-        coordinates: { x: "77%", y: "42%" },
-        connections: ["Shanghai"],
-      },
-    ],
+    city: "Zoeterwoude-Rijndijk",
+    country: "Netherlands",
+    coordinates: { x: 54, y: 22 },
+    connections: ["London"],
+  },
+  {
+    city: "Dhaka",
+    country: "Bangladesh",
+    coordinates: { x: 78, y: 38 },
+    connections: ["Hong Kong", "London"],
+  },
+  {
+    city: "Hong Kong",
+    country: "Hong Kong",
+    coordinates: { x: 86, y: 35 },
+    connections: ["Dhaka", "London"],
   },
 ];
-
-const allLocations = globalLocations.flatMap((r) => r.locations);
 
 /* ------------------ COMPONENT ------------------ */
 
@@ -103,59 +71,69 @@ export const WhyUs = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="why-us" className="section-padding bg-foreground">
+    <section
+      id="why-us"
+      className="section-padding bg-foreground relative overflow-hidden"
+    >
       <div className="container-custom" ref={ref}>
-        {/* ------------------ HEADER ------------------ */}
+        {/* HEADER */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          transition={{ duration: 0.7 }}
+          className="text-center mb-20"
         >
-          <p className="text-primary text-sm uppercase tracking-[0.2em] mb-4">
+          <p className="text-primary text-sm uppercase tracking-[0.3em] mb-4">
             Why Promoda
           </p>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
-            Global Capability. Local Access.
+
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+            Global Capability.
+            <br />
+            Local Access.
           </h2>
-          <p className="text-white/70 text-lg max-w-2xl mx-auto">
-            Real accountability with a partner who understands your needs and
-            delivers results.
+
+          <p className="text-white/60 text-lg max-w-2xl mx-auto">
+            Structured international infrastructure with accountable,
+            relationship-driven support.
           </p>
         </motion.div>
 
-        <div className="flex flex-col lg:flex-row gap-12 items-center">
+        <div className="flex flex-col lg:flex-row gap-16 items-center">
           {/* ------------------ MAP SECTION ------------------ */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={isInView ? { opacity: 1, scale: 1 } : {}}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.9 }}
             className="lg:w-1/2"
           >
-            <div className="bg-gradient-to-br from-gray-900 to-gray-950 rounded-2xl p-8 border border-white/10">
-              {/* Header */}
-              <div className="flex items-center gap-2 mb-6">
-                <Globe className="w-5 h-5 text-primary" />
-                <h3 className="text-xl font-bold text-white">
-                  Global Infrastructure
+            <div className="bg-white/5 backdrop-blur-xl rounded-3xl p-10 border border-white/10 shadow-2xl">
+              <div className="flex items-center gap-3 mb-8">
+                <Globe className="w-6 h-6 text-primary" />
+                <h3 className="text-xl font-semibold text-white tracking-wide">
+                  Global Office Network
                 </h3>
               </div>
 
-              {/* MAP */}
+              {/* 🔥 FIXED MAP CONTAINER */}
               <div
-                className="relative w-full aspect-[4/3] rounded-xl overflow-hidden border border-white/5"
+                className="relative w-full h-[300px] md:h-[380px] lg:h-[420px] rounded-2xl border border-white/5 overflow-hidden"
                 style={{
-                  backgroundImage: "url('../public/white-map-formatted.jpg')",
+                  backgroundImage: "url('/white-map-formatted.jpg')",
                   backgroundRepeat: "no-repeat",
-                  backgroundPosition: "center",
-                  backgroundSize: "contain",
+                  backgroundPosition: "center center",
+                  backgroundSize: "cover",
                 }}
               >
                 {/* CONNECTION LINES */}
-                <svg className="absolute inset-0 w-full h-full">
-                  {allLocations.flatMap((location) =>
+                <svg
+                  className="absolute inset-0 w-full h-full z-0 pointer-events-none"
+                  viewBox="0 0 100 100"
+                  preserveAspectRatio="none"
+                >
+                  {officeLocations.flatMap((location) =>
                     location.connections.map((targetCity) => {
-                      const target = allLocations.find(
+                      const target = officeLocations.find(
                         (l) => l.city === targetCity,
                       );
                       if (!target) return null;
@@ -163,12 +141,12 @@ export const WhyUs = () => {
                       return (
                         <line
                           key={`${location.city}-${targetCity}`}
-                          x1={`${parseInt(location.coordinates.x) * 8}`}
-                          y1={`${parseInt(location.coordinates.y) * 4.5}`}
-                          x2={`${parseInt(target.coordinates.x) * 8}`}
-                          y2={`${parseInt(target.coordinates.y) * 4.5}`}
+                          x1={location.coordinates.x}
+                          y1={location.coordinates.y}
+                          x2={target.coordinates.x}
+                          y2={target.coordinates.y}
                           stroke="#60a5fa"
-                          strokeWidth="1.5"
+                          strokeWidth="0.8"
                           strokeDasharray="4 4"
                           opacity="0.5"
                         >
@@ -176,7 +154,7 @@ export const WhyUs = () => {
                             attributeName="stroke-dashoffset"
                             from="0"
                             to="8"
-                            dur="2s"
+                            dur="3s"
                             repeatCount="indefinite"
                           />
                         </line>
@@ -185,62 +163,70 @@ export const WhyUs = () => {
                   )}
                 </svg>
 
-                {/* HUB POINTS */}
-                {allLocations.map((location, index) => (
-                  <div
-                    key={location.city}
-                    className="absolute -translate-x-1/2 -translate-y-1/2"
-                    style={{
-                      left: location.coordinates.x,
-                      top: location.coordinates.y,
-                    }}
-                  >
-                    {/* Pulse */}
+                {/* OFFICE DOTS */}
+                {officeLocations.map((location, index) => {
+                  const showBelow = location.coordinates.y < 20;
+
+                  return (
                     <div
-                      className="absolute w-10 h-10 rounded-full bg-primary/30 animate-ping"
-                      style={{ animationDelay: `${index * 0.6}s` }}
-                    />
+                      key={location.city}
+                      className="absolute -translate-x-1/2 -translate-y-1/2 group z-20"
+                      style={{
+                        left: `${location.coordinates.x}%`,
+                        top: `${location.coordinates.y}%`,
+                      }}
+                    >
+                      {/* Pulse */}
+                      <div
+                        className="absolute w-10 h-10 rounded-full bg-primary/20 animate-ping"
+                        style={{ animationDelay: `${index * 0.8}s` }}
+                      />
 
-                    {/* Core */}
-                    <div className="relative w-4 h-4 rounded-full bg-primary border border-white shadow-lg" />
+                      {/* Core Dot */}
+                      <div className="relative w-4 h-4 rounded-full bg-primary border border-white shadow-xl group-hover:scale-125 transition duration-300 cursor-pointer" />
 
-                    {/* Tooltip */}
-                    <div className="absolute left-1/2 top-full mt-3 -translate-x-1/2 whitespace-nowrap">
-                      <div className="bg-gray-900/90 backdrop-blur px-3 py-2 rounded-md border border-white/10">
-                        <div className="text-sm font-semibold text-white">
-                          {location.city}
-                        </div>
-                        <div className="text-xs text-white/60">
-                          {location.country}
+                      {/* Tooltip */}
+                      <div
+                        className={`absolute left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition duration-300 pointer-events-none ${
+                          showBelow ? "top-[140%]" : "bottom-[140%]"
+                        }`}
+                      >
+                        <div className="bg-gray-900/95 backdrop-blur-xl px-4 py-3 rounded-xl border border-white/10 shadow-2xl text-center whitespace-nowrap">
+                          <div className="text-sm font-semibold text-white">
+                            {location.city}
+                          </div>
+                          <div className="text-xs text-white/50">
+                            {location.country}
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             </div>
           </motion.div>
 
-          {/* ------------------ REASONS ------------------ */}
+          {/* ------------------ REASONS SECTION ------------------ */}
           <div className="lg:w-1/2">
             <div className="grid gap-6">
               {reasons.map((reason, index) => (
                 <motion.div
                   key={reason.title}
-                  initial={{ opacity: 0, x: 30 }}
+                  initial={{ opacity: 0, x: 40 }}
                   animate={isInView ? { opacity: 1, x: 0 } : {}}
-                  transition={{ delay: index * 0.1 }}
-                  className="p-6 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 transition"
+                  transition={{ delay: index * 0.15 }}
+                  className="p-7 rounded-2xl border border-white/10 bg-white/5 hover:bg-white/10 hover:border-primary/40 transition duration-300"
                 >
-                  <div className="flex gap-4">
-                    <div className="p-3 bg-primary/10 rounded-lg">
+                  <div className="flex gap-5">
+                    <div className="p-4 bg-primary/10 rounded-xl">
                       <reason.icon className="w-6 h-6 text-primary" />
                     </div>
                     <div>
-                      <h3 className="text-lg font-semibold text-white mb-1">
+                      <h3 className="text-lg font-semibold text-white mb-2">
                         {reason.title}
                       </h3>
-                      <p className="text-white/60 text-sm">
+                      <p className="text-white/60 text-sm leading-relaxed">
                         {reason.description}
                       </p>
                     </div>

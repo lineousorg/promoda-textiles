@@ -9,7 +9,8 @@ export const PremiumOfficeLocations = () => {
   const officeLocations = [
     {
       flag: "🇧🇩",
-      city: "Bangladesh (Procurement Office)",
+      city: "Bangladesh",
+      cityAlias: "Procurement Office",
       officeName: "Promoda Textiles Limited",
       address: "House 6, Road 10, Sector 4, Uttara, Dhaka 1230, Bangladesh",
       email: "manajir@promodatextiles.com",
@@ -17,15 +18,17 @@ export const PremiumOfficeLocations = () => {
     },
     {
       flag: "🇬🇧",
-      city: "United Kingdom (Regional Sales)",
+      city: "United Kingdom",
+      cityAlias: "Regional Sales Office",
       // officeName: "Draapes Fashions Limited",
-      address: "7 City Aews, Barkingside, Ilford IG6 2FV, England",
+      address: "7 City Mews, Barkingside, Ilford IG6 2FV, England",
       email: "zaafir@promodatextiles.com",
       whatsapp: "+447478643127",
     },
     {
       flag: "🇭🇰",
-      city: "Hong Kong (Commercial Office)",
+      city: "Hong Kong",
+      cityAlias: "Commercial Office",
       officeName: "Promoda Textiles Hong Kong Ltd",
       address:
         "Unit 5, 6/F, Laurels Industrial Centre, 32 Tai Yau Street, San Po Kong, Kowloon, Hong Kong",
@@ -103,6 +106,9 @@ export const PremiumOfficeLocations = () => {
                       </h5>
                       <p className="text-white/70 text-sm">
                         {location.officeName}
+                      </p>
+                      <p className="text-white/50 text-xs">
+                        {location.cityAlias}
                       </p>
                     </div>
                   </div>

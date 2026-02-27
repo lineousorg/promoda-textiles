@@ -42,25 +42,41 @@ const officeLocations = [
     city: "London",
     country: "United Kingdom",
     coordinates: { x: 48, y: 27 },
-    connections: ["Dhaka", "Hong Kong", "Zoeterwoude-Rijndijk"],
   },
   {
     city: "Zoeterwoude-Rijndijk",
     country: "Netherlands",
-    coordinates: { x: 54, y: 22 },
-    connections: ["London"],
+    coordinates: { x: 54, y: 18 },
+  },
+  {
+    city: "Porto",
+    country: "Portugal",
+    coordinates: { x: 36, y: 30 },
+  },
+  {
+    city: "Istanbul",
+    country: "Türkiye",
+    coordinates: { x: 64, y: 32 },
   },
   {
     city: "Dhaka",
     country: "Bangladesh",
-    coordinates: { x: 78, y: 38 },
-    connections: ["Hong Kong", "London"],
+    coordinates: { x: 82, y: 52 },
   },
   {
     city: "Hong Kong",
-    country: "Hong Kong",
-    coordinates: { x: 86, y: 35 },
-    connections: ["Dhaka", "London"],
+    country: "Hong Kong SAR, China",
+    coordinates: { x: 96, y: 35 },
+  },
+  {
+    city: "Guangzhou",
+    country: "China",
+    coordinates: { x: 83, y: 36 },
+  },
+  {
+    city: "Ho Chi Minh City",
+    country: "Vietnam",
+    coordinates: { x: 92, y: 50 },
   },
 ];
 
@@ -111,11 +127,11 @@ export const WhyUs = () => {
               <div className="flex items-center gap-3 mb-8">
                 <Globe className="w-6 h-6 text-primary" />
                 <h3 className="text-xl font-semibold text-white tracking-wide">
-                  Global Office Network
+                  Global Sourcing Network
                 </h3>
               </div>
 
-              {/* 🔥 FIXED MAP CONTAINER */}
+              {/* MAP CONTAINER */}
               <div
                 className="relative w-full h-[300px] md:h-[380px] lg:h-[420px] rounded-2xl border border-white/5 overflow-hidden"
                 style={{
@@ -125,47 +141,16 @@ export const WhyUs = () => {
                   backgroundSize: "cover",
                 }}
               >
-                {/* CONNECTION LINES */}
-                <svg
-                  className="absolute inset-0 w-full h-full z-0 pointer-events-none"
-                  viewBox="0 0 100 100"
-                  preserveAspectRatio="none"
-                >
-                  {officeLocations.flatMap((location) =>
-                    location.connections.map((targetCity) => {
-                      const target = officeLocations.find(
-                        (l) => l.city === targetCity,
-                      );
-                      if (!target) return null;
-
-                      return (
-                        <line
-                          key={`${location.city}-${targetCity}`}
-                          x1={location.coordinates.x}
-                          y1={location.coordinates.y}
-                          x2={target.coordinates.x}
-                          y2={target.coordinates.y}
-                          stroke="#60a5fa"
-                          strokeWidth="0.8"
-                          strokeDasharray="4 4"
-                          opacity="0.5"
-                        >
-                          <animate
-                            attributeName="stroke-dashoffset"
-                            from="0"
-                            to="8"
-                            dur="3s"
-                            repeatCount="indefinite"
-                          />
-                        </line>
-                      );
-                    }),
-                  )}
-                </svg>
-
-                {/* OFFICE DOTS */}
                 {officeLocations.map((location, index) => {
-                  const showBelow = location.coordinates.y < 20;
+                  const positionStyles = [
+                    "top-[140%] left-1/2 -translate-x-1/2",
+                    "bottom-[140%] left-1/2 -translate-x-1/2",
+                    "left-[140%] top-1/2 -translate-y-1/2",
+                    "right-[140%] top-1/2 -translate-y-1/2",
+                  ];
+
+                  const tooltipPosition =
+                    positionStyles[index % positionStyles.length];
 
                   return (
                     <div
@@ -187,9 +172,7 @@ export const WhyUs = () => {
 
                       {/* Tooltip */}
                       <div
-                        className={`absolute left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition duration-300 pointer-events-none ${
-                          showBelow ? "top-[140%]" : "bottom-[140%]"
-                        }`}
+                        className={`absolute opacity-0 group-hover:opacity-100 transition duration-300 pointer-events-none ${tooltipPosition}`}
                       >
                         <div className="bg-gray-900/95 backdrop-blur-xl px-4 py-3 rounded-xl border border-white/10 shadow-2xl text-center whitespace-nowrap">
                           <div className="text-sm font-semibold text-white">
